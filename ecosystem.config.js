@@ -56,7 +56,7 @@ module.exports = {
         user: 'ubuntu', // EC2 username
         host: '13.127.36.233', // Or use DNS: ec2-13-127-36-233.ap-south-1.compute.amazonaws.com
         ref: 'origin/main',
-        repo: 'git@github.com:AbhijitIntelliod/test_cicd.git',
+        repo: 'https://github.com/Abhivera/aws_nodejs_cicd.git',
         path: '/home/ubuntu/Miftah',
         'post-deploy':
           'npm ci --production && pm2 reload ecosystem.config.js --env production && pm2 save',

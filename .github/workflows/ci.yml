@@ -143,11 +143,11 @@ jobs:
 
             # Check if this is a git repository, if not clone it
             if [ ! -d ".git" ]; then
-              echo "Not a git repository, cloning from origin..."
+              echo "Not a git repository, cloning from Abhivera/aws_nodejs_cicd..."
               # Remove any existing files first (but preserve hidden files like .env)
               rm -rf * .[^.]*
-              # Clone the repository
-              git clone https://github.com/${{ github.repository }}.git .
+              # Clone the specific repository
+              git clone https://github.com/Abhivera/aws_nodejs_cicd.git .
               if [ $? -ne 0 ]; then
                 echo "ERROR: Failed to clone repository"
                 exit 1
