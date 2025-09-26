@@ -280,6 +280,6 @@ jobs:
 
             # Show recent logs for debugging
             echo "Recent application logs:"
-            pm2 logs Miftah --lines 20
+            timeout 10s pm2 logs Miftah --lines 20 || echo "Logs displayed (timeout reached)"
 
             echo "✅ Deployment completed successfully!"
