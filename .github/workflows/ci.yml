@@ -110,7 +110,7 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && secrets.EC2_HOST != ''
 
     steps:
       - name: Checkout code

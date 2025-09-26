@@ -1,4 +1,4 @@
-# 🔐 Authentication API Testing Guide - Step by Step
+# 🔐 Authentication API Testing Guide - Step by Step//
 
 This comprehensive guide provides step-by-step instructions for testing all authentication API endpoints with actual request/response examples.
 
