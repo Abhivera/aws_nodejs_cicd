@@ -1,0 +1,14 @@
+node_modules/
+.env
+npm-debug.log
+*.log
+.DS_Store
+dist/
+build/
+coverage/
+
+# Log files (but keep the logs directory structure)
+logs/*.log
+logs/out.log
+logs/error.log
+!logs/.gitkeep
