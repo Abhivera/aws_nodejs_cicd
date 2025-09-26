@@ -268,8 +268,8 @@ jobs:
             # Verify environment variables are loaded (after PM2 starts)
             echo "🔍 Verifying environment variables..."
             if [ -f "scripts/verify-env.js" ]; then
-              # Load .env file and run verification
-              export $(cat .env | xargs) && node scripts/verify-env.js
+              # Load .env file and run verification (filter out comments and empty lines)
+              export $(grep -v '^#' .env | grep -v '^$' | xargs) && node scripts/verify-env.js
             else
               echo "Warning: verify-env.js script not found, skipping verification"
             fi
