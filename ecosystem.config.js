@@ -15,7 +15,7 @@ module.exports = {
         // Production environment - PM2 will load from .env file automatically
         env_production: {
           NODE_ENV: 'production',
-          PORT: 3000,
+          // PORT will be loaded from .env file
         },
 
         // Environment file for production

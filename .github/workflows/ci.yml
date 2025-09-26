@@ -250,16 +250,8 @@ jobs:
 
             # Stop existing PM2 process if running
             echo "Stopping existing PM2 process..."
-            pm2 stop nodejs_cicd_test || echo "No existing process to stop"
-            pm2 delete nodejs_cicd_test || echo "No existing process to delete"
-
-            # Verify environment variables are loaded
-            echo "🔍 Verifying environment variables..."
-            if [ -f "scripts/verify-env.js" ]; then
-              node scripts/verify-env.js
-            else
-              echo "Warning: verify-env.js script not found, skipping verification"
-            fi
+            pm2 stop Miftah || echo "No existing process to stop"
+            pm2 delete Miftah || echo "No existing process to delete"
 
             # Load environment variables and start application using PM2
             echo "Starting application with PM2..."
@@ -273,12 +265,21 @@ jobs:
             # Save PM2 configuration
             pm2 save
 
+            # Verify environment variables are loaded (after PM2 starts)
+            echo "🔍 Verifying environment variables..."
+            if [ -f "scripts/verify-env.js" ]; then
+              # Load .env file and run verification
+              export $(cat .env | xargs) && node scripts/verify-env.js
+            else
+              echo "Warning: verify-env.js script not found, skipping verification"
+            fi
+
             # Show PM2 status
             echo "PM2 Status:"
             pm2 status
 
             # Show recent logs for debugging
             echo "Recent application logs:"
-            pm2 logs nodejs_cicd_test --lines 20
+            pm2 logs Miftah --lines 20
 
             echo "✅ Deployment completed successfully!"
