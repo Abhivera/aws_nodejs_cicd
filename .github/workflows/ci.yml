@@ -280,6 +280,15 @@ jobs:
 
             # Show recent logs for debugging
             echo "Recent application logs:"
-            timeout 10s pm2 logs Miftah --lines 20 || echo "Logs displayed (timeout reached)"
+            pm2 logs Miftah --lines 20 --nostream 2>/dev/null || echo "Logs displayed (using alternative method)"
+            # Alternative: Show log files directly if PM2 logs command hangs
+            if [ -f "logs/out.log" ]; then
+              echo "=== Application Output Logs ==="
+              tail -20 logs/out.log
+            fi
+            if [ -f "logs/error.log" ]; then
+              echo "=== Application Error Logs ==="
+              tail -20 logs/error.log
+            fi
 
             echo "✅ Deployment completed successfully!"
